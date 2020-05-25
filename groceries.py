@@ -65,10 +65,17 @@ print("--------------")
     "aisle": "cookies cakes",
     "price": 3.50},
 
-for p in products:
+
+def sort_by_name(one_item):
+    return one_item["name"]
+
+
+sorted_products = sorted(products, key=sort_by_name)
+
+for p in sorted_products:
     price_usd = p["price"]
     price_usd = "{0:.2f}".format(p["price"])
-    print("... " + p["name"] + "($" + str(price_usd) + ")")
+    print("+ " + p["name"] + "($" + str(price_usd) + ")")
 
 
 #  + All-Seasons Salt ($4.99)
@@ -104,3 +111,4 @@ for p in products:
 #  + Pantry (2 products)
 #  + Personal Care (2 products)
 #  + Snacks (2 products)
+
