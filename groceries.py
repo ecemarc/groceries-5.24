@@ -50,6 +50,9 @@ print(products)
 
 # TODO: write some Python code here to produce the desired output
 
+
+# PART 1:
+
 products_count = len(products)
 
 print(type(products))
@@ -58,13 +61,6 @@ print("--------------")
 print("THERE ARE " + str(products_count) + " PRODUCTS:")
 print("--------------")
 
-{
-    "id": 1,
-    "name": "Chocolate Sandwich Cookies",
-    "department": "snacks",
-    "aisle": "cookies cakes",
-    "price": 3.50},
-
 
 def sort_by_name(one_item):
     return one_item["name"]
@@ -72,11 +68,24 @@ def sort_by_name(one_item):
 
 sorted_products = sorted(products, key=sort_by_name)
 
-for p in sorted_products:
-    price_usd = p["price"]
-    price_usd = "{0:.2f}".format(p["price"])
-    print("+ " + p["name"] + "($" + str(price_usd) + ")")
+# for p in sorted_products:
+#     price_usd = p["price"]
+#     price_usd = "{0:.2f}".format(p["price"])
+#     print("+ " + p["name"] + "($" + str(price_usd) + ")")
 
+# PART 2:
+
+departments = []
+
+for p in products:
+    if p["department"] not in departments:
+        departments.append(p["department"])
+
+departments_count = len(departments)
+
+print("--------------")
+print("THERE ARE " + str(departments_count) + " DEPARTMENTS:")
+print("--------------")
 
 #  + All-Seasons Salt ($4.99)
 #  + Chocolate Fudge Layer Cake ($18.50)
@@ -111,4 +120,5 @@ for p in sorted_products:
 #  + Pantry (2 products)
 #  + Personal Care (2 products)
 #  + Snacks (2 products)
+
 
