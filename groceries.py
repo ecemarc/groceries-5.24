@@ -68,24 +68,38 @@ def sort_by_name(one_item):
 
 sorted_products = sorted(products, key=sort_by_name)
 
-# for p in sorted_products:
-#     price_usd = p["price"]
-#     price_usd = "{0:.2f}".format(p["price"])
-#     print("+ " + p["name"] + "($" + str(price_usd) + ")")
+for p in sorted_products:
+    price_usd = p["price"]
+    price_usd = "{0:.2f}".format(p["price"])
+    print("+ " + p["name"] + "($" + str(price_usd) + ")")
 
 # PART 2:
 
 departments = []
 
+
 for p in products:
     if p["department"] not in departments:
         departments.append(p["department"])
+
+unique_departments = list(set(departments))
 
 departments_count = len(departments)
 
 print("--------------")
 print("THERE ARE " + str(departments_count) + " DEPARTMENTS:")
 print("--------------")
+
+unique_departments.sort()
+for d in unique_departments:
+    matching_products = [p for p in products if p["department"] == d]
+    matching_products_count = len(matching_products)
+    if matching_products_count > 1:
+        label = "products"
+    else:
+        label = "product"
+
+    print("+ " + d.title() + " (" + str(matching_products_count) + " " + label + ")")
 
 #  + All-Seasons Salt ($4.99)
 #  + Chocolate Fudge Layer Cake ($18.50)
@@ -120,5 +134,4 @@ print("--------------")
 #  + Pantry (2 products)
 #  + Personal Care (2 products)
 #  + Snacks (2 products)
-
 
