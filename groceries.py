@@ -55,23 +55,23 @@ print(products)
 
 products_count = len(products)
 
-print(type(products))
+print(type(products))   
 
+print("--------------")     #header
+print("THERE ARE " + str(products_count) + " PRODUCTS:") 
 print("--------------")
-print("THERE ARE " + str(products_count) + " PRODUCTS:")
-print("--------------")
 
 
-def sort_by_name(one_item):
+def sort_by_name(one_item):  #sorting
     return one_item["name"]
 
 
 sorted_products = sorted(products, key=sort_by_name)
 
-for p in sorted_products:
+for p in sorted_products:  
     price_usd = p["price"]
-    price_usd = "{0:.2f}".format(p["price"])
-    print("+ " + p["name"] + "($" + str(price_usd) + ")")
+    price_usd = "{0:.2f}".format(p["price"])  #formatting price
+    print("+ " + p["name"] + "($" + str(price_usd) + ")")  #printing name and price
 
 # PART 2:
 
@@ -79,19 +79,19 @@ departments = []
 
 
 for p in products:
-    if p["department"] not in departments:
+    if p["department"] not in departments:  #making sure each department counts once
         departments.append(p["department"])
 
 unique_departments = list(set(departments))
 
-departments_count = len(departments)
+departments_count = len(departments) #counting departments
 
 print("--------------")
 print("THERE ARE " + str(departments_count) + " DEPARTMENTS:")
 print("--------------")
 
 unique_departments.sort()
-for d in unique_departments:
+for d in unique_departments:    #how many prodeucts per department
     matching_products = [p for p in products if p["department"] == d]
     matching_products_count = len(matching_products)
     if matching_products_count > 1:
@@ -99,7 +99,7 @@ for d in unique_departments:
     else:
         label = "product"
 
-    print("+ " + d.title() + " (" + str(matching_products_count) + " " + label + ")")
+    print("+ " + d.title() + " (" + str(matching_products_count) + " " + label + ")") # printing dep names and how many products
 
 #  + All-Seasons Salt ($4.99)
 #  + Chocolate Fudge Layer Cake ($18.50)
@@ -134,4 +134,3 @@ for d in unique_departments:
 #  + Pantry (2 products)
 #  + Personal Care (2 products)
 #  + Snacks (2 products)
-
